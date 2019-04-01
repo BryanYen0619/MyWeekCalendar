@@ -15,6 +15,7 @@
             <enum name="threeLetters" value="1"/>
         </attr>
         <attr name="hideNames"  format="boolean"/>
+        <attr name="showChtWeekDayName" format="boolean"/>
 
         <!-- danigarciaalva -->
         <attr name="todaysDateTextColor" format="color"/>

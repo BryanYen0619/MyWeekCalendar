@@ -24,6 +24,7 @@ import java.text.DateFormatSymbols;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 
 import noman.weekcalendar.decorator.DayDecorator;
 import noman.weekcalendar.decorator.DefaultDayDecorator;
@@ -175,7 +176,20 @@ public class WeekCalendar extends LinearLayout {
             }
 
             private String[] getWeekDayNames() {
-                String[] names = DateFormatSymbols.getInstance().getShortWeekdays();
+                String[] names;
+                if (typedArray.getBoolean(R.styleable.WeekCalendar_showChtWeekDayName, false)) {
+                    names = DateFormatSymbols.getInstance(Locale.TAIWAN).getShortWeekdays();
+
+                    // Locale.TAIWAN 專用，過濾掉"週"
+                    for (int i = 0; i < names.length ; i++) {
+                        if (names[i] != null && !names[i].equals("")) {
+                            names[i] = names[i].replace("週", "");
+                        }
+                    }
+                } else {
+                    names = DateFormatSymbols.getInstance().getShortWeekdays();
+                }
+
                 List<String> daysName = new ArrayList<>(Arrays.asList(names));
                 daysName.remove(0);
                 daysName.add(daysName.remove(0));
