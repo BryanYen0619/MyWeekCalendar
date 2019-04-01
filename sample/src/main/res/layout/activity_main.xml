@@ -20,7 +20,8 @@
         app:todaysDateBgColor="@color/colorTropicalOrange"
         app:selectedBgColor="@color/colorSteelBlue"
         app:daysTextColor="@color/colorBlueGray"
-        app:weekTextColor="@color/colorSteelBlue"
+        app:weekTextColor="@color/colorBlueGray"
+        app:weekTextWithHolidayTextColor="@color/colorSteelBlue"
         />
 
     <LinearLayout
