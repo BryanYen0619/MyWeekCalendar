@@ -10,6 +10,7 @@ import android.os.Build;
 import android.support.annotation.ColorInt;
 import android.support.annotation.DimenRes;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.TextView;
@@ -29,6 +30,7 @@ public class DefaultDayDecorator implements DayDecorator {
     private final int todayDateColor;
     private int todayDateTextColor;
     private int textColor;
+    private int holidayTextColor;
     private float textSize;
 
     public DefaultDayDecorator(Context context,
@@ -36,13 +38,15 @@ public class DefaultDayDecorator implements DayDecorator {
                                @ColorInt int todayDateColor,
                                @ColorInt int todayDateTextColor,
                                @ColorInt int textColor,
-                               float textSize) {
+                               float textSize,
+                               @ColorInt int holidayTextColor) {
         this.context = context;
         this.selectedDateColor = selectedDateColor;
         this.todayDateColor = todayDateColor;
         this.todayDateTextColor = todayDateTextColor;
         this.textColor = textColor;
         this.textSize = textSize;
+        this.holidayTextColor = holidayTextColor;
     }
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
@@ -79,7 +83,11 @@ public class DefaultDayDecorator implements DayDecorator {
             dayTextView.setBackground(solidCircle);
             dayTextView.setTextColor(this.todayDateTextColor);
         } else {
-            dayTextView.setTextColor(textColor);
+            if (dateTime.dayOfWeek().getAsText().equals("Sunday") || dateTime.dayOfWeek().getAsText().equals("Saturday")){
+                dayTextView.setTextColor(holidayTextColor);
+            } else {
+                dayTextView.setTextColor(textColor);
+            }
         }
         float size = textSize;
         if (size == -1)

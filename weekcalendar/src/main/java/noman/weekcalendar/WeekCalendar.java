@@ -21,9 +21,7 @@ import com.squareup.otto.Subscribe;
 import org.joda.time.DateTime;
 
 import java.text.DateFormatSymbols;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Locale;
 
 import noman.weekcalendar.decorator.DayDecorator;
@@ -78,12 +76,14 @@ public class WeekCalendar extends LinearLayout {
                     .WeekCalendar_daysTextSize, -1);
             int todayDateTextColor = typedArray.getColor(R.styleable
                     .WeekCalendar_todaysDateTextColor, ContextCompat.getColor(getContext(), android.R.color.white));
+            int holidayTextColor = typedArray.getColor(R.styleable.WeekCalendar_holidayTextColor, Color.WHITE);
             setDayDecorator(new DefaultDayDecorator(getContext(),
                     selectedDateColor,
                     todayDateColor,
                     todayDateTextColor,
                     daysTextColor,
-                    daysTextSize));
+                    daysTextSize,
+                    holidayTextColor));
         }
         setOrientation(VERTICAL);
 
@@ -167,8 +167,13 @@ public class WeekCalendar extends LinearLayout {
                 TextView day = (TextView) convertView.findViewById(R.id.daytext);
                 day.setText(days[position]);
                 if (typedArray != null) {
-                    day.setTextColor(typedArray.getColor(R.styleable.WeekCalendar_weekTextColor,
-                            Color.WHITE));
+                    if (position == 0 || position == 6) {
+                        day.setTextColor(typedArray.getColor(R.styleable.WeekCalendar_holidayTextColor,
+                                Color.WHITE));
+                    } else {
+                        day.setTextColor(typedArray.getColor(R.styleable.WeekCalendar_weekTextColor,
+                                Color.WHITE));
+                    }
                     day.setTextSize(TypedValue.COMPLEX_UNIT_PX, typedArray.getDimension(R.styleable
                             .WeekCalendar_weekTextSize, day.getTextSize()));
                 }
@@ -181,7 +186,7 @@ public class WeekCalendar extends LinearLayout {
                     names = DateFormatSymbols.getInstance(Locale.TAIWAN).getShortWeekdays();
 
                     // Locale.TAIWAN 專用，過濾掉"週"
-                    for (int i = 0; i < names.length ; i++) {
+                    for (int i = 0; i < names.length; i++) {
                         if (names[i] != null && !names[i].equals("")) {
                             names[i] = names[i].replace("週", "");
                         }
@@ -190,16 +195,18 @@ public class WeekCalendar extends LinearLayout {
                     names = DateFormatSymbols.getInstance().getShortWeekdays();
                 }
 
-                List<String> daysName = new ArrayList<>(Arrays.asList(names));
-                daysName.remove(0);
-                daysName.add(daysName.remove(0));
+                String[] namesArray = Arrays.copyOfRange(names, 1, names.length);
 
-                if (typedArray.getInt(R.styleable.WeekCalendar_dayNameLength, 0) == 0)
-                    for (int i = 0; i < daysName.size(); i++)
-                        daysName.set(i, daysName.get(i).substring(0, 1));
-                names = new String[daysName.size()];
-                daysName.toArray(names);
-                return names;
+                //                List<String> daysName = new ArrayList<>(Arrays.asList(names));
+                //                daysName.remove(0);
+                //                daysName.add(daysName.remove(0));
+                //
+                //                if (typedArray.getInt(R.styleable.WeekCalendar_dayNameLength, 0) == 0)
+                //                    for (int i = 0; i < daysName.size(); i++)
+                //                        daysName.set(i, daysName.get(i).substring(0, 1));
+                //                names = new String[daysName.size()];
+                //                daysName.toArray(names);
+                return namesArray;
 
             }
         });
