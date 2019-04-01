@@ -21,7 +21,7 @@
         app:selectedBgColor="@color/colorSteelBlue"
         app:daysTextColor="@color/colorBlueGray"
         app:weekTextColor="@color/colorBlueGray"
-        app:weekTextWithHolidayTextColor="@color/colorSteelBlue"
+        app:holidayTextColor="@color/colorSteelBlue"
         />
 
     <LinearLayout
