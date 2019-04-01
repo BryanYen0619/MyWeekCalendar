@@ -1,88 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <noman.weekcalendar.WeekCalendar
-        android:id="@+id/weekCalendar"
-        android:layout_width="match_parent"
-        android:layout_height="65dp"
-        android:background="@color/colorPrimary"
-        app:numOfPages="150"
-        app:showChtWeekDayName="true"
-        app:daysBackgroundColor="@color/colorWhite"
-        app:weekBackgroundColor="@color/colorWhite"
-        app:todaysDateBgColor="@color/colorTropicalOrange"
-        app:selectedBgColor="@color/colorSteelBlue"
-        app:daysTextColor="@color/colorBlueGray"
-        app:weekTextColor="@color/colorBlueGray"
-        app:holidayTextColor="@color/colorSteelBlue"
-        />
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:background="@color/colorWhite">
 
         <Button
             android:id="@+id/button"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_toLeftOf="@+id/button2"
-            android:layout_toStartOf="@+id/button2"
-            android:layout_weight="0.5"
             android:onClick="onPreviousClick"
             android:text="Previous"/>
 
+        <TextView
+            android:id="@+id/currentMonText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="TEST"/>
+
         <Button
             android:id="@+id/button2"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignTop="@+id/button"
-            android:layout_weight="0.5"
             android:onClick="onNextClick"
             android:text="Next"/>
     </LinearLayout>
 
-    <Button
-        android:id="@+id/today"
+    <noman.weekcalendar.WeekCalendar
+        android:id="@+id/weekCalendar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/linearLayout"
-        android:onClick="onResetClick"/>
+        android:background="@color/colorPrimary"
+        app:daysBackgroundColor="@color/colorWhite"
+        app:daysTextColor="@color/colorBlueGray"
+        app:holidayTextColor="@color/colorSteelBlue"
+        app:numOfPages="150"
+        app:selectedBgColor="@color/colorSteelBlue"
+        app:showChtWeekDayName="true"
+        app:todaysDateBgColor="@color/colorTropicalOrange"
+        app:weekBackgroundColor="@color/colorWhite"
+        app:weekTextColor="@color/colorBlueGray"/>
+    <!--<Button-->
+    <!--android:id="@+id/today"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_alignParentLeft="true"-->
+    <!--android:layout_alignParentStart="true"-->
+    <!--android:layout_below="@+id/linearLayout"-->
+    <!--android:onClick="onResetClick"/>-->
 
-    <LinearLayout
-        android:layout_below="@+id/today"
-        android:layout_centerHorizontal="true"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:orientation="horizontal">
+    <!--<LinearLayout-->
+    <!--android:layout_below="@+id/today"-->
+    <!--android:layout_centerHorizontal="true"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_centerInParent="true"-->
+    <!--android:orientation="horizontal">-->
 
-        <Button
-            android:layout_weight="0.5"
-            android:id="@+id/selectedDateButton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:onClick="onSelectedDateClick"/>
+    <!--<Button-->
+    <!--android:layout_weight="0.5"-->
+    <!--android:id="@+id/selectedDateButton"-->
+    <!--android:layout_width="0dp"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:onClick="onSelectedDateClick"/>-->
 
-        <Button
-            android:layout_weight="0.5"
-            android:id="@+id/startDate"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:onClick="onStartDateClick"/>
-    </LinearLayout>
-</RelativeLayout>
+    <!--<Button-->
+    <!--android:layout_weight="0.5"-->
+    <!--android:id="@+id/startDate"-->
+    <!--android:layout_width="0dp"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:onClick="onStartDateClick"/>-->
+    <!--</LinearLayout>-->
+</LinearLayout>

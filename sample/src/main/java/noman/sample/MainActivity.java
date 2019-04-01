@@ -9,9 +9,14 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.joda.time.DateTime;
+
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
 
 import noman.weekcalendar.WeekCalendar;
 import noman.weekcalendar.listener.OnDateClickListener;
@@ -19,7 +24,7 @@ import noman.weekcalendar.listener.OnWeekChangeListener;
 
 public class MainActivity extends AppCompatActivity {
     private WeekCalendar weekCalendar;
-
+private TextView currentMonText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,14 +33,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void init() {
-        Button todaysDate = (Button) findViewById(R.id.today);
-        Button selectedDate = (Button) findViewById(R.id.selectedDateButton);
-        Button startDate = (Button) findViewById(R.id.startDate);
-        todaysDate.setText(new DateTime().toLocalDate().toString() + " (Reset Button)");
-        selectedDate.setText(new DateTime().plusDays(50).toLocalDate().toString()
-                + " (Set Selected Date Button)");
-        startDate.setText(new DateTime().plusDays(7).toLocalDate().toString()
-                + " (Set Start Date Button)");
+//        Button todaysDate = (Button) findViewById(R.id.today);
+//        Button selectedDate = (Button) findViewById(R.id.selectedDateButton);
+//        Button startDate = (Button) findViewById(R.id.startDate);
+//        todaysDate.setText(new DateTime().toLocalDate().toString() + " (Reset Button)");
+//        selectedDate.setText(new DateTime().plusDays(50).toLocalDate().toString()
+//                + " (Set Selected Date Button)");
+//        startDate.setText(new DateTime().plusDays(7).toLocalDate().toString()
+//                + " (Set Start Date Button)");
+
+        Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH) + 1;
+
+        currentMonText = (TextView) findViewById(R.id.currentMonText);
+        currentMonText.setText(String.valueOf(year)+"年"+ String.valueOf(month)+"月");
 
         weekCalendar = (WeekCalendar) findViewById(R.id.weekCalendar);
         weekCalendar.setOnDateClickListener(new OnDateClickListener() {
@@ -48,11 +60,15 @@ public class MainActivity extends AppCompatActivity {
         });
         weekCalendar.setOnWeekChangeListener(new OnWeekChangeListener() {
             @Override
-            public void onWeekChange(DateTime firstDayOfTheWeek, boolean forward) {
-                Toast.makeText(MainActivity.this, "Week changed: " + firstDayOfTheWeek +
-                        " Forward: " + forward, Toast.LENGTH_SHORT).show();
+            public void onWeekChange(DateTime middleDayOfTheWeek, boolean forward) {
+                currentMonText.setText(middleDayOfTheWeek.getYear() + "年" +middleDayOfTheWeek.getMonthOfYear()+"月");
             }
         });
+
+        List<DateTime> dayNoteDot = new ArrayList<>();
+
+        DateTime test = new DateTime();
+        dayNoteDot.add(test);
     }
 
     @Override
@@ -78,12 +94,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onNextClick(View veiw) {
-        weekCalendar.moveToNext();
+        weekCalendar.moveToNextWeek();
     }
 
 
     public void onPreviousClick(View view) {
-        weekCalendar.moveToPrevious();
+        weekCalendar.moveToPreviousWeek();
     }
 
     public void onResetClick(View view) {
