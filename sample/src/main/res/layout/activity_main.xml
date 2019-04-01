@@ -13,7 +13,6 @@
         android:layout_width="match_parent"
         android:layout_height="65dp"
         android:background="@color/colorPrimary"
-        app:dayNameLength="threeLetters"
         app:numOfPages="150"
         app:showChtWeekDayName="true"
         app:daysBackgroundColor="@color/colorWhite"
