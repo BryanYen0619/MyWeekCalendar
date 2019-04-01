@@ -15,6 +15,7 @@
         android:background="@color/colorPrimary"
         app:dayNameLength="threeLetters"
         app:numOfPages="150"
+        app:showChtWeekDayName="true"
         />
 
     <LinearLayout
