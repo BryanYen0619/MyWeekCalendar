@@ -16,6 +16,12 @@
         app:dayNameLength="threeLetters"
         app:numOfPages="150"
         app:showChtWeekDayName="true"
+        app:daysBackgroundColor="@color/colorWhite"
+        app:weekBackgroundColor="@color/colorWhite"
+        app:todaysDateBgColor="@color/colorTropicalOrange"
+        app:selectedBgColor="@color/colorSteelBlue"
+        app:daysTextColor="@color/colorBlueGray"
+        app:weekTextColor="@color/colorSteelBlue"
         />
 
     <LinearLayout
