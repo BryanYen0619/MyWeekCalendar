@@ -3,4 +3,15 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="colorSteelBlue">#80bbd7</color>
+
+    <color name="colorTropicalOrange50">#7fFF8033</color>
+    <color name="colorTropicalOrange">#FF8033</color>
+
+    <!-- 白 -->
+    <color name="colorWhite">#FFFFFF</color>
+
+    <color name="transparent">#00000000</color>
+    <color name="transparentDark">#802b2b2b</color>
 </resources>

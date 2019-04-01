@@ -51,8 +51,8 @@ public class DefaultDayDecorator implements DayDecorator {
                          DateTime dateTime, DateTime firstDayOfTheWeek, DateTime selectedDateTime) {
         //DateTime dt = new DateTime();
 
-        Drawable holoCircle = ContextCompat.getDrawable(context, R.drawable.holo_circle);
-        Drawable solidCircle = ContextCompat.getDrawable(context, R.drawable.solid_circle);
+        Drawable holoCircle = ContextCompat.getDrawable(context, R.drawable.holo_radius);
+        Drawable solidCircle = ContextCompat.getDrawable(context, R.drawable.solid_stroke);
 
         holoCircle.setColorFilter(selectedDateColor, PorterDuff.Mode.SRC_ATOP);
         solidCircle.setColorFilter(todayDateColor, PorterDuff.Mode.SRC_ATOP);
