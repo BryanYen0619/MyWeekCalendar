@@ -73,7 +73,8 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
         currentPage--;
         currentPage = currentPage <= 1 ? NUM_OF_PAGES / 2 : currentPage;
         BusProvider.getInstance().post(
-                new Event.OnWeekChange(date.withDayOfWeek(DateTimeConstants.MONDAY), false));
+                new Event.OnWeekChange(date.withDayOfWeek(DateTimeConstants.MONDAY),
+                        date.withDayOfWeek(DateTimeConstants.WEDNESDAY), false));
     }
 
 
@@ -82,7 +83,8 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
         currentPage++;
         currentPage = currentPage >= NUM_OF_PAGES - 1 ? NUM_OF_PAGES / 2 : currentPage;
         BusProvider.getInstance().post(
-                new Event.OnWeekChange(date.withDayOfWeek(DateTimeConstants.MONDAY), true));
+                new Event.OnWeekChange(date.withDayOfWeek(DateTimeConstants.MONDAY),
+                        date.withDayOfWeek(DateTimeConstants.WEDNESDAY), true));
     }
 
    /* public DateTime getDate() {

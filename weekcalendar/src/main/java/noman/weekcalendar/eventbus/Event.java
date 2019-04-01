@@ -124,15 +124,21 @@ public class Event {
     public static class OnWeekChange {
 
         private final DateTime firstDayOfTheWeek;
+        private final DateTime middleDayOfTheWeek;
         private final boolean forward;
 
-        public OnWeekChange(DateTime firstDayOfTheWeek, boolean isForward) {
+        public OnWeekChange(DateTime firstDayOfTheWeek, DateTime middleDayOfTheWeek,boolean isForward) {
             this.firstDayOfTheWeek = firstDayOfTheWeek;
+            this.middleDayOfTheWeek = middleDayOfTheWeek;
             this.forward = isForward;
         }
 
         public DateTime getFirstDayOfTheWeek() {
             return firstDayOfTheWeek;
+        }
+
+        public DateTime getMiddleDayOfTheWeek() {
+            return middleDayOfTheWeek;
         }
 
         public boolean isForward() {

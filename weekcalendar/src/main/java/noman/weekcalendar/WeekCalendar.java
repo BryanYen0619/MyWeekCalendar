@@ -119,7 +119,7 @@ public class WeekCalendar extends LinearLayout {
     @Subscribe
     public void onWeekChange(Event.OnWeekChange event) {
         if (onWeekChangeListener != null) {
-            onWeekChangeListener.onWeekChange(event.getFirstDayOfTheWeek(), event.isForward());
+            onWeekChangeListener.onWeekChange(event.getMiddleDayOfTheWeek(), event.isForward());
         }
     }
 
@@ -223,6 +223,14 @@ public class WeekCalendar extends LinearLayout {
      */
     public void updateUi() {
         BusProvider.getInstance().post(new Event.OnUpdateUi());
+    }
+
+    public void moveToPreviousWeek() {
+        BusProvider.getInstance().post(new Event.SetCurrentPageEvent(-1));
+    }
+
+    public void moveToNextWeek() {
+        BusProvider.getInstance().post(new Event.SetCurrentPageEvent(1));
     }
 
     public void moveToPrevious() {
