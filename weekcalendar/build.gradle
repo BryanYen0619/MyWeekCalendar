@@ -33,7 +33,7 @@ dependencies {
 }
 
 // 這個版本是區分庫版本的，因此當我們需要更新library時記得修改這個版本
-version = '1.0.0'
+version = '2.0.0'
 
 def siteUrl = 'https://github.com/BryanYen0619/WeekCalendar'      // 項目的主頁
 def gitUrl = 'https://github.com/BryanYen0619/WeekCalendar.git'       // Git倉庫的url
@@ -45,7 +45,7 @@ install {
             project {
                 packaging 'aar'
                 // Add your description here
-                name 'Weekclendar'
+                name 'WeekClendar'
                 url siteUrl
                 // Set your license
                 licenses {
@@ -91,7 +91,7 @@ bintray {
     key = properties.getProperty("bintray.apikey")
     pkg {
         repo = "maven"      // 這邊是對應jCenter的倉庫名稱
-        name = "WeekCalendat"    // 發佈到jCenter上的項目名稱
+        name = "WeekCalendar"    // 發佈到jCenter上的項目名稱
         websiteUrl = siteUrl
         vcsUrl = gitUrl
         licenses = ["Apache-2.0"]
