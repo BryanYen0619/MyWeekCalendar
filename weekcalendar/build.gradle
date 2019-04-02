@@ -17,6 +17,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    // 這是添加的
+    lintOptions{
+        abortOnError false
+        checkReleaseBuilds false
+    }
 }
 
 dependencies {
@@ -27,48 +32,80 @@ dependencies {
     implementation 'com.squareup:otto:1.3.8'
 }
 
-group = 'noman.weekcalendar'
-version = '1.0.6'
+// 這個版本是區分庫版本的，因此當我們需要更新library時記得修改這個版本
+version = '1.0.0'
 
-task generateSourcesJar(type: Jar) {
+def siteUrl = 'https://github.com/BryanYen0619/WeekCalendar.git'      // 項目的主頁
+def gitUrl = 'https://github.com/BryanYen0619/WeekCalendar.git'       // Git倉庫的url
+group = 'noman.weekcalendar'        // Maven Group ID for the artifact，一般填你唯一的專案名稱
+install {
+    repositories.mavenInstaller {
+        // This generates POM.xml with proper parameters
+        pom {
+            project {
+                packaging 'aar'
+                // Add your description here
+                name 'Weekclendar'
+                url siteUrl
+                // Set your license
+                licenses {
+                    license {
+                        name 'The Apache Software License, Version 2.0'
+                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+                developers { // 填寫一些開發者的訊息
+                    developer {
+                        id 'bryanyen0619'
+                        name 'BryanYen'
+                        email 'bryan2155@gmail.com'
+                    }
+                }
+                scm {
+                    connection gitUrl
+                    developerConnection gitUrl
+                    url siteUrl
+                }
+            }
+        }
+    }
+}
+
+task sourcesJar(type: Jar) {
     from android.sourceSets.main.java.srcDirs
-    classifier 'sources'
+    classifier = 'sources'
 }
-
-task generateJavaDocs(type: Javadoc) {
+task javadoc(type: Javadoc) {
     source = android.sourceSets.main.java.srcDirs
-    classpath += project.files(android.getBootClasspath()
-            .join(File.pathSeparator))
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+}
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
 }
 
-task generateJavaDocsJar(type: Jar) {
-    from generateJavaDocs.destinationDir
-    classifier 'javadoc'
-}
-generateJavaDocsJar.dependsOn generateJavaDocs
-
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
 bintray {
-    user = 'nomanrafique'
-    key = 'KEY'
+    user = properties.getProperty("bintray.user")
+    key = properties.getProperty("bintray.apikey")
     pkg {
         repo = 'maven'
         name = 'weekcalendar'
 
         version {
-            name = '1.0.6'
+            name = '1.0.0'
             desc = 'WeekCalendar'
             released  = new Date()
-            vcsTag = '1.0.6'
+            vcsTag = '1.0.0'
         }
 
         licenses = ['Apache-2.0']
-        vcsUrl = 'https://github.com/nomanr/WeekCalendar.git'
-        websiteUrl = 'https://github.com/nomanr/WeekCalendar'
     }
     configurations = ['archives']
 }
 
 artifacts {
-    archives generateJavaDocsJar
-    archives generateSourcesJar
+    archives javadocJar
+    archives sourcesJar
 }
