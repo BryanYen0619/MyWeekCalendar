@@ -24,23 +24,24 @@
 <h5>Gradle</h5>
 
     dependencies {
-       compile 'noman.weekcalendar:weekcalendar:1.0.6'
+       compile 'bryanyen.myweekcalendar:weekcalendar:1.0.0'
     }
 
  <h5>Maven</h5>
 
     <dependency>
-      <groupId>noman.weekcalendar</groupId>
-      <artifactId>weekcalendar</artifactId>
-      <version>1.0.6</version>
-    </dependency>
+	  <groupId>bryanyen.myweekcalendar</groupId>
+	  <artifactId>weekcalendar</artifactId>
+	  <version>1.0.0</version>
+	  <type>pom</type>
+	</dependency>
 
 <h3>Sample Usage</h3>
 
 
 ----------
 
-     <noman.weekcalendar.WeekCalendar
+     <bryanyen.myweekcalendar.WeekCalendar
         android:id="@+id/weekCalendar"
         android:layout_width="match_parent"
         android:layout_height="65dp"
@@ -74,7 +75,7 @@ There are a few xml attributes to customise the calendar. If you feel that any c
 
 <h5>Example</h5>
 
-     <noman.weekcalendar.WeekCalendar
+     <bryanyen.myweekcalendar.WeekCalendar
        android:id="@+id/weekCalendar"
        android:layout_width="match_parent"
        android:layout_height="65dp"
