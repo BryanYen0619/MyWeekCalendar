@@ -1,4 +1,4 @@
-package noman.sample;
+package bryanyen.sample;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

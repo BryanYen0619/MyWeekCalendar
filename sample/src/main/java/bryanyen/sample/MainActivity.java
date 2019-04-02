@@ -1,4 +1,4 @@
-package noman.sample;
+package bryanyen.sample;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -8,7 +8,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,9 +17,9 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import noman.weekcalendar.WeekCalendar;
-import noman.weekcalendar.listener.OnDateClickListener;
-import noman.weekcalendar.listener.OnWeekChangeListener;
+import bryanyen.myweekcalendar.WeekCalendar;
+import bryanyen.myweekcalendar.listener.OnDateClickListener;
+import bryanyen.myweekcalendar.listener.OnWeekChangeListener;
 
 public class MainActivity extends AppCompatActivity {
     private WeekCalendar weekCalendar;

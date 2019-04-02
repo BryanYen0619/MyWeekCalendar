@@ -1,4 +1,4 @@
-package noman.weekcalendar.eventbus;
+package bryanyen.myweekcalendar.eventbus;
 
 import android.view.View;
 import android.widget.TextView;

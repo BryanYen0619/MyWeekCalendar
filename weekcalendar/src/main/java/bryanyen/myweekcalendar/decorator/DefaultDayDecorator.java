@@ -1,4 +1,4 @@
-package noman.weekcalendar.decorator;
+package bryanyen.myweekcalendar.decorator;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
@@ -17,8 +17,8 @@ import android.widget.TextView;
 
 import org.joda.time.DateTime;
 
-import noman.weekcalendar.R;
-import noman.weekcalendar.fragment.WeekFragment;
+import bryanyen.myweekcalendar.R;
+import bryanyen.myweekcalendar.fragment.WeekFragment;
 
 /**
  * Created by gokhan on 7/27/16.

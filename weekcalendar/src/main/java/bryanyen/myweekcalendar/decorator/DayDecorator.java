@@ -1,4 +1,4 @@
-package noman.weekcalendar.decorator;
+package bryanyen.myweekcalendar.decorator;
 
 import android.view.View;
 import android.widget.TextView;

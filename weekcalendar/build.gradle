@@ -9,7 +9,7 @@ android {
         minSdkVersion 14
         targetSdkVersion 26
         versionCode 2
-        versionName "2.0.0"
+        versionName "1.0.0"
     }
     buildTypes {
         release {
@@ -33,11 +33,11 @@ dependencies {
 }
 
 // 這個版本是區分庫版本的，因此當我們需要更新library時記得修改這個版本
-version = '2.0.0'
+version = '1.0.0'
 
 def siteUrl = 'https://github.com/BryanYen0619/WeekCalendar'      // 項目的主頁
 def gitUrl = 'https://github.com/BryanYen0619/WeekCalendar.git'       // Git倉庫的url
-group = 'noman.weekcalendar'        // Maven Group ID for the artifact，一般填你唯一的專案名稱
+group = 'bryanyen.myweekcalendar'        // Maven Group ID for the artifact，一般填你唯一的專案名稱
 install {
     repositories.mavenInstaller {
         // This generates POM.xml with proper parameters
@@ -45,7 +45,7 @@ install {
             project {
                 packaging 'aar'
                 // Add your description here
-                name 'WeekClendar'
+                name 'MyWeekClendar'
                 url siteUrl
                 // Set your license
                 licenses {
@@ -91,7 +91,7 @@ bintray {
     key = properties.getProperty("bintray.apikey")
     pkg {
         repo = "maven"      // 這邊是對應jCenter的倉庫名稱
-        name = "WeekCalendar"    // 發佈到jCenter上的項目名稱
+        name = "MyWeekCalendar"    // 發佈到jCenter上的項目名稱
         websiteUrl = siteUrl
         vcsUrl = gitUrl
         licenses = ["Apache-2.0"]

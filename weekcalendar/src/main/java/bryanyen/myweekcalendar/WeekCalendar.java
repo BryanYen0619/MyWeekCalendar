@@ -1,4 +1,4 @@
-package noman.weekcalendar;
+package bryanyen.myweekcalendar;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -24,13 +24,13 @@ import java.text.DateFormatSymbols;
 import java.util.Arrays;
 import java.util.Locale;
 
-import noman.weekcalendar.decorator.DayDecorator;
-import noman.weekcalendar.decorator.DefaultDayDecorator;
-import noman.weekcalendar.eventbus.BusProvider;
-import noman.weekcalendar.eventbus.Event;
-import noman.weekcalendar.listener.OnDateClickListener;
-import noman.weekcalendar.listener.OnWeekChangeListener;
-import noman.weekcalendar.view.WeekPager;
+import bryanyen.myweekcalendar.decorator.DayDecorator;
+import bryanyen.myweekcalendar.decorator.DefaultDayDecorator;
+import bryanyen.myweekcalendar.eventbus.BusProvider;
+import bryanyen.myweekcalendar.eventbus.Event;
+import bryanyen.myweekcalendar.listener.OnDateClickListener;
+import bryanyen.myweekcalendar.listener.OnWeekChangeListener;
+import bryanyen.myweekcalendar.view.WeekPager;
 
 /**
  * Created by nor on 12/6/2015.

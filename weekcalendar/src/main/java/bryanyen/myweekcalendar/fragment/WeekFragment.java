@@ -1,4 +1,4 @@
-package noman.weekcalendar.fragment;
+package bryanyen.myweekcalendar.fragment;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
@@ -22,9 +22,9 @@ import org.joda.time.DateTimeConstants;
 
 import java.util.ArrayList;
 
-import noman.weekcalendar.R;
-import noman.weekcalendar.eventbus.BusProvider;
-import noman.weekcalendar.eventbus.Event;
+import bryanyen.myweekcalendar.R;
+import bryanyen.myweekcalendar.eventbus.BusProvider;
+import bryanyen.myweekcalendar.eventbus.Event;
 
 /**
  * Created by nor on 12/4/2015.

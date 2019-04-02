@@ -1,4 +1,4 @@
-package noman.weekcalendar.eventbus;
+package bryanyen.myweekcalendar.eventbus;
 
 import android.os.Handler;
 import android.os.Looper;

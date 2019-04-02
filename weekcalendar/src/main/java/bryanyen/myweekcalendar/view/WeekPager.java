@@ -1,4 +1,4 @@
-package noman.weekcalendar.view;
+package bryanyen.myweekcalendar.view;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -12,11 +12,11 @@ import com.squareup.otto.Subscribe;
 
 import org.joda.time.DateTime;
 
-import noman.weekcalendar.R;
-import noman.weekcalendar.adapter.PagerAdapter;
-import noman.weekcalendar.eventbus.BusProvider;
-import noman.weekcalendar.eventbus.Event;
-import noman.weekcalendar.fragment.WeekFragment;
+import bryanyen.myweekcalendar.R;
+import bryanyen.myweekcalendar.adapter.PagerAdapter;
+import bryanyen.myweekcalendar.eventbus.BusProvider;
+import bryanyen.myweekcalendar.eventbus.Event;
+import bryanyen.myweekcalendar.fragment.WeekFragment;
 
 /**
  * Created by gokhan on 7/28/16.
