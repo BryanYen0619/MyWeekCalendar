@@ -1,23 +1,19 @@
+# Fork From 
+	https://github.com/nomanr/WeekCalendar
 
-I AM NOT WORKING ON THIS LIBRARY ANYMORE. I AM NOT VERY PROUD OF THEY WAY I WROTE THIS WIDGET :grin:. I WOULD RECOMMEND TO USE CALENDAR AS A CUSTOM VIEW INSTEAD OF ADDING IT AS GRADLE DEPENDENCY. FORKS + PRS ARE WELCOME. 
+從WeekCalendar修改
 
+<h3>修改內容</h3>
+1. 日期更改成中文
+2. 當天日期改用填滿園角矩形
+3. 選擇日期改用空心圓角矩形
 
-<br/><br/><img src="https://raw.githubusercontent.com/nomanr/WeekCalendar/master/images/cover.png">
-<p><b>WeekCalendar</b> is a library which provides a weekly calendar. </p>
-The sample project includes the usage of the library.
-Support for Android 4.0 and up.
+<h3>新增功能</h3>
+1. 週數切換interface
 
-Feel free to fork or issue pull requests on github. Issues can be reported on the github issue tracker.
+<h3>截圖</h3>
 
-<a href="https://play.google.com/store/apps/details?id=noman.weekcalendar" target="_blank"><img src="https://raw.githubusercontent.com/nomanr/WeekCalendar/master/images/google_play.png" width="250" target="_blank"/></a>
-
-[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-WeekCalendar-green.svg?style=true)](https://android-arsenal.com/details/1/2905)
-
-
-<h3>Demo</h3>
-
-<img src="https://raw.githubusercontent.com/nomanr/WeekCalendar/master/images/gif.gif" width="400">
-
+上傳中
 
 <h3>Setup</h3>
 
@@ -55,6 +51,8 @@ There are a few xml attributes to customise the calendar. If you feel that any c
 
 ----------
 
+ 1. Origin
+ 
  - `numOfPages` 
  - `daysTextSize`
  - `daysTextColor`
@@ -65,8 +63,12 @@ There are a few xml attributes to customise the calendar. If you feel that any c
  - `selectedBgColor`
  - `todaysDateBgColor`
  - `todaysDateTextColor`
- - `dayNameLength`
  - `hideNames`
+
+2. New
+
+- `holidayTextColor` 
+- `showChtWeekDayName` 
 
 ----------
 
@@ -94,12 +96,13 @@ There are a few xml attributes to customise the calendar. If you feel that any c
  - `selectedBgColor` By default, its color is set to be `colorAccent`, if you've that attribute in attribute in `color.xml`, then the backgroud color will be that one. Otherwise the pink color shown in the demo.
  - `todaysDateBgColor` todays date background color, same as `selectedBgColor`.
  - `todaysDateTextColor` todays date text color,  by default the text color is set to be white.
- - `dayNameLength` week day name length, `singleLetter` means (S,M,T..) and `threeLetters` means (Sun, Mun, Tue..)
  - `hideNames` , set this attribute to hide name of week days.
-
+- `holidayTextColor ` , set holiday title and day text color.
+- `showChtWeekDayName` , on / off calendar week text show CHT text.
 
 ----------
 <h3>Impelement Listener </h3>
+
 `OnDateClickListener` returns `DateTime` object. `DateTime` is class available in <a href="http://www.joda.org/joda-time/" target="_blank">Joda Time</a>. I will recommend using this library if you are playing with date and time.
 
     weekCalendar.setOnDateClickListener(new OnDateClickListener() {
@@ -122,15 +125,14 @@ There are a few xml attributes to customise the calendar. If you feel that any c
 
 
 ----------
- - <a href="http://www.joda.org/joda-time/" target="_blank">Joda Time</a>
- - <a href="https://github.com/square/otto" target="_blank">Otto</a>
+ - <a href="https://github.com/nomanr/WeekCalendar" target="_blank"> WeekCalendar </a>
 
 <h3>License</h3>
 
 
 ----------
 
-    Copyright (c) 2015 Noman Rafique
+    Copyright (c) 2019 Bryan Yen Rafique
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
