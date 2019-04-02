@@ -35,7 +35,7 @@ dependencies {
 // 這個版本是區分庫版本的，因此當我們需要更新library時記得修改這個版本
 version = '1.0.0'
 
-def siteUrl = 'https://github.com/BryanYen0619/WeekCalendar.git'      // 項目的主頁
+def siteUrl = 'https://github.com/BryanYen0619/WeekCalendar'      // 項目的主頁
 def gitUrl = 'https://github.com/BryanYen0619/WeekCalendar.git'       // Git倉庫的url
 group = 'noman.weekcalendar'        // Maven Group ID for the artifact，一般填你唯一的專案名稱
 install {
@@ -90,17 +90,12 @@ bintray {
     user = properties.getProperty("bintray.user")
     key = properties.getProperty("bintray.apikey")
     pkg {
-        repo = 'maven'
-        name = 'weekcalendar'
-
-        version {
-            name = '1.0.0'
-            desc = 'WeekCalendar'
-            released  = new Date()
-            vcsTag = '1.0.0'
-        }
-
-        licenses = ['Apache-2.0']
+        repo = "maven"      // 這邊是對應jCenter的倉庫名稱
+        name = "WeekCalendat"    // 發佈到jCenter上的項目名稱
+        websiteUrl = siteUrl
+        vcsUrl = gitUrl
+        licenses = ["Apache-2.0"]
+        publish = true
     }
     configurations = ['archives']
 }
