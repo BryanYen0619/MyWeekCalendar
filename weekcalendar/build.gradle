@@ -35,8 +35,8 @@ dependencies {
 // 這個版本是區分庫版本的，因此當我們需要更新library時記得修改這個版本
 version = '1.0.0'
 
-def siteUrl = 'https://github.com/BryanYen0619/WeekCalendar'      // 項目的主頁
-def gitUrl = 'https://github.com/BryanYen0619/WeekCalendar.git'       // Git倉庫的url
+def siteUrl = 'https://github.com/BryanYen0619/MyWeekCalendar'      // 項目的主頁
+def gitUrl = 'https://github.com/BryanYen0619/MyWeekCalendar.git'       // Git倉庫的url
 group = 'bryanyen.myweekcalendar'        // Maven Group ID for the artifact，一般填你唯一的專案名稱
 install {
     repositories.mavenInstaller {
@@ -45,7 +45,7 @@ install {
             project {
                 packaging 'aar'
                 // Add your description here
-                name 'MyWeekClendar'
+                name 'myweekcalendar'
                 url siteUrl
                 // Set your license
                 licenses {
