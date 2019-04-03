@@ -98,10 +98,10 @@ bintray {
         name = 'MyWeekCalendar'
 
         version {
-            name = '1.0.4'
+            name = '1.0.3'
             desc = 'WeekCalendar'
             released  = new Date()
-            vcsTag = '1.0.4'
+            vcsTag = '1.0.3'
         }
 
         licenses = ['Apache-2.0']
