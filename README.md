@@ -24,7 +24,7 @@
 <h5>Gradle</h5>
 
     dependencies {
-       compile 'bryanyen.myweekcalendar:weekcalendar:1.0.0'
+       compile 'bryanyen.myweekcalendar:weekcalendar:1.0.1'
     }
 
  <h5>Maven</h5>
@@ -32,7 +32,7 @@
     <dependency>
 	  <groupId>bryanyen.myweekcalendar</groupId>
 	  <artifactId>weekcalendar</artifactId>
-	  <version>1.0.0</version>
+	  <version>1.0.1</version>
 	  <type>pom</type>
 	</dependency>
 
