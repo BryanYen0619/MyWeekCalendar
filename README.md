@@ -13,7 +13,7 @@
 
 <h3>截圖</h3>
 
-上傳中
+ ![Image text](https://github.com/BryanYen0619/MyWeekCalendar/blob/master/images/%E8%9E%A2%E5%B9%95%E5%BF%AB%E7%85%A7%202019-04-03%20%E4%B8%8B%E5%8D%882.16.44.png)
 
 <h3>Setup</h3>
 
