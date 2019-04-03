@@ -8,8 +8,8 @@ android {
     defaultConfig {
         minSdkVersion 14
         targetSdkVersion 26
-        versionCode 3
-        versionName "1.0.2"
+        versionCode 4
+        versionName "1.0.3"
     }
     buildTypes {
         release {
@@ -33,7 +33,7 @@ dependencies {
 }
 
 // 這個版本是區分庫版本的，因此當我們需要更新library時記得修改這個版本
-version = '1.0.2'
+version = '1.0.3'
 
 def siteUrl = 'https://github.com/BryanYen0619/MyWeekCalendar'      // 項目的主頁
 def gitUrl = 'https://github.com/BryanYen0619/MyWeekCalendar.git'       // Git倉庫的url
@@ -71,18 +71,22 @@ install {
     }
 }
 
-task sourcesJar(type: Jar) {
+task generateSourcesJar(type: Jar) {
     from android.sourceSets.main.java.srcDirs
-    classifier = 'sources'
+    classifier 'sources'
 }
-task javadoc(type: Javadoc) {
+
+task generateJavaDocs(type: Javadoc) {
     source = android.sourceSets.main.java.srcDirs
-    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+    classpath += project.files(android.getBootClasspath()
+            .join(File.pathSeparator))
 }
-task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier = 'javadoc'
-    from javadoc.destinationDir
+
+task generateJavaDocsJar(type: Jar) {
+    from generateJavaDocs.destinationDir
+    classifier 'javadoc'
 }
+generateJavaDocsJar.dependsOn generateJavaDocs
 
 Properties properties = new Properties()
 properties.load(project.rootProject.file('local.properties').newDataInputStream())
@@ -90,17 +94,24 @@ bintray {
     user = properties.getProperty("bintray.user")
     key = properties.getProperty("bintray.apikey")
     pkg {
-        repo = "maven"      // 這邊是對應jCenter的倉庫名稱
-        name = "MyWeekCalendar"    // 發佈到jCenter上的項目名稱
-        websiteUrl = siteUrl
+        repo = 'maven'
+        name = 'MyWeekCalendar'
+
+        version {
+            name = '1.0.4'
+            desc = 'WeekCalendar'
+            released  = new Date()
+            vcsTag = '1.0.4'
+        }
+
+        licenses = ['Apache-2.0']
         vcsUrl = gitUrl
-        licenses = ["Apache-2.0"]
-        publish = true
+        websiteUrl = siteUrl
     }
     configurations = ['archives']
 }
 
 artifacts {
-    archives javadocJar
-    archives sourcesJar
+    archives generateJavaDocsJar
+    archives generateSourcesJar
 }
