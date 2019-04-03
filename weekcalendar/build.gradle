@@ -86,7 +86,6 @@ task generateJavaDocsJar(type: Jar) {
     from generateJavaDocs.destinationDir
     classifier 'javadoc'
 }
-generateJavaDocsJar.dependsOn generateJavaDocs
 
 Properties properties = new Properties()
 properties.load(project.rootProject.file('local.properties').newDataInputStream())
@@ -94,19 +93,12 @@ bintray {
     user = properties.getProperty("bintray.user")
     key = properties.getProperty("bintray.apikey")
     pkg {
-        repo = 'maven'
-        name = 'MyWeekCalendar'
-
-        version {
-            name = '1.0.3'
-            desc = 'WeekCalendar'
-            released  = new Date()
-            vcsTag = '1.0.3'
-        }
-
-        licenses = ['Apache-2.0']
-        vcsUrl = gitUrl
+        repo = "maven"      // 這邊是對應jCenter的倉庫名稱
+        name = "MyWeekCalendar"    // 發佈到jCenter上的項目名稱
         websiteUrl = siteUrl
+        vcsUrl = gitUrl
+        licenses = ["Apache-2.0"]
+        publish = true
     }
     configurations = ['archives']
 }
