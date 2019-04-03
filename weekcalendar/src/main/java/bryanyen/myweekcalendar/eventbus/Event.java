@@ -5,6 +5,9 @@ import android.widget.TextView;
 
 import org.joda.time.DateTime;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by nor on 12/5/2015.
  */
@@ -81,6 +84,19 @@ public class Event {
         }
 
         private DateTime startDate;
+    }
+
+    public static class SetDateDotListEvent {
+
+        public SetDateDotListEvent(ArrayList<DateTime> date) {
+            this.date = date;
+        }
+
+        public ArrayList<DateTime> getDateDotList() {
+            return date;
+        }
+
+        private ArrayList<DateTime> date;
     }
 
     public static class OnDayDecorateEvent {

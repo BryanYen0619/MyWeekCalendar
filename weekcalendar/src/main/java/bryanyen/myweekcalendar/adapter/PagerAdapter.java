@@ -13,6 +13,7 @@ import bryanyen.myweekcalendar.eventbus.Event;
 import bryanyen.myweekcalendar.fragment.WeekFragment;
 
 import static bryanyen.myweekcalendar.fragment.WeekFragment.DATE_KEY;
+import static bryanyen.myweekcalendar.fragment.WeekFragment.DATE_NOTE_DOT;
 import static bryanyen.myweekcalendar.view.WeekPager.NUM_OF_PAGES;
 
 /**
@@ -22,10 +23,12 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
     private static final String TAG = "PagerAdapter";
     private int currentPage = NUM_OF_PAGES / 2;
     private DateTime date;
+    private boolean isNoteDot = false;
 
-    public PagerAdapter(FragmentManager fm, DateTime date) {
+    public PagerAdapter(FragmentManager fm, DateTime date, boolean isNoteDot) {
         super(fm);
         this.date = date;
+        this.isNoteDot = isNoteDot;
     }
 
     @Override
@@ -39,6 +42,8 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
             bundle.putSerializable(DATE_KEY, getNextDate());
         else
             bundle.putSerializable(DATE_KEY, getTodaysDate());
+
+        bundle.putBoolean(DATE_NOTE_DOT, isNoteDot);
 
         fragment.setArguments(bundle);
         return fragment;

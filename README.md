@@ -7,13 +7,14 @@
 1. 日期更改成中文
 2. 當天日期改用填滿園角矩形
 3. 選擇日期改用空心圓角矩形
+4. 支援記事顯示
 
 <h3>新增功能</h3>
 1. 週數切換interface
 
 <h3>截圖</h3>
 
- ![Image text](https://github.com/BryanYen0619/MyWeekCalendar/blob/master/images/%E8%9E%A2%E5%B9%95%E5%BF%AB%E7%85%A7%202019-04-03%20%E4%B8%8B%E5%8D%882.16.44.png)
+ ![Image text](https://github.com/BryanYen0619/MyWeekCalendar/blob/master/images/demoImage.png)
 
 <h3>Setup</h3>
 
@@ -24,7 +25,7 @@
 <h5>Gradle</h5>
 
     dependencies {
-       implementation 'bryanyen.myweekcalendar:weekcalendar:1.0.1'
+       implementation 'bryanyen.myweekcalendar:weekcalendar:1.0.4'
     }
 
  <h5>Maven</h5>
@@ -32,7 +33,7 @@
     <dependency>
 	  <groupId>bryanyen.myweekcalendar</groupId>
 	  <artifactId>weekcalendar</artifactId>
-	  <version>1.0.1</version>
+	  <version>1.0.4</version>
 	  <type>pom</type>
 	</dependency>
 
@@ -78,6 +79,7 @@ There are a few xml attributes to customise the calendar. If you feel that any c
 
 - `holidayTextColor` 
 - `showChtWeekDayName` 
+- `showNoteDot`
 
 ----------
 
@@ -109,6 +111,7 @@ There are a few xml attributes to customise the calendar. If you feel that any c
  - `dayNameLength` week day name length, singleLetter means (S,M,T..) and threeLetters means (Sun, Mun, Tue..).
 - `holidayTextColor ` , set holiday title and day text color.
 - `showChtWeekDayName` , on / off calendar week text show CHT text.
+- `showNoteDot` , show note dot under date text.
 
 ----------
 <h3>Impelement Listener </h3>

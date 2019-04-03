@@ -53,7 +53,8 @@
         app:todaysDateBgColor="@color/colorTropicalOrange"
         app:weekBackgroundColor="@color/colorWhite"
         app:weekTextColor="@color/colorBlueGray"
-        app:dayNameLength="singleLetter"/>
+        app:dayNameLength="singleLetter"
+        app:showNoteDot="true"/>
     <!--<Button-->
     <!--android:id="@+id/today"-->
     <!--android:layout_width="match_parent"-->

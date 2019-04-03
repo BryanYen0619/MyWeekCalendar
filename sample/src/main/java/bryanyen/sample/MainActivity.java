@@ -64,10 +64,12 @@ private TextView currentMonText;
             }
         });
 
-        List<DateTime> dayNoteDot = new ArrayList<>();
+        ArrayList<DateTime> dayNoteDot = new ArrayList<>();
 
         DateTime test = new DateTime();
         dayNoteDot.add(test);
+
+        weekCalendar.setDateDotList(dayNoteDot);
     }
 
     @Override

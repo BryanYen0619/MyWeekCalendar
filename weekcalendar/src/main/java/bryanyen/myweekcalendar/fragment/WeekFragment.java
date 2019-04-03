@@ -3,24 +3,30 @@ package bryanyen.myweekcalendar.fragment;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.media.Image;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.squareup.otto.Subscribe;
 
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeConstants;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import bryanyen.myweekcalendar.R;
 import bryanyen.myweekcalendar.eventbus.BusProvider;
@@ -31,13 +37,16 @@ import bryanyen.myweekcalendar.eventbus.Event;
  */
 public class WeekFragment extends Fragment {
     public static String DATE_KEY = "date_key";
+    public static String DATE_NOTE_DOT = "date_note_dot";
     private GridView gridView;
     private WeekAdapter weekAdapter;
     public static DateTime selectedDateTime = new DateTime();
     public static DateTime CalendarStartDate = new DateTime();
+    public static ArrayList<DateTime> setDateDotList = new ArrayList<>();
     private DateTime startDate;
     private DateTime endDate;
     private boolean isVisible;
+    private boolean isShowDateDot;
 
     @Nullable
     @Override
@@ -51,6 +60,7 @@ public class WeekFragment extends Fragment {
     private void init() {
         ArrayList<DateTime> days = new ArrayList<>();
         DateTime midDate = (DateTime) getArguments().getSerializable(DATE_KEY);
+        isShowDateDot = getArguments().getBoolean(DATE_NOTE_DOT);
         if (midDate != null) {
             midDate = midDate.withDayOfWeek(DateTimeConstants.WEDNESDAY);
         }
@@ -63,6 +73,12 @@ public class WeekFragment extends Fragment {
         endDate = days.get(days.size() - 1);
 
         weekAdapter = new WeekAdapter(getActivity(), days);
+
+        if (isShowDateDot) {
+            weekAdapter.setShowDateDot(true);
+            weekAdapter.setDateDotList(setDateDotList);
+        }
+
         gridView.setAdapter(weekAdapter);
 
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -123,8 +139,10 @@ public class WeekFragment extends Fragment {
 
     public class WeekAdapter extends BaseAdapter {
         private ArrayList<DateTime> days;
+        private ArrayList<DateTime> dateDotList;
         private Context context;
         private DateTime firstDay;
+        private boolean isShowDateDot = false;
 
         WeekAdapter(Context context, ArrayList<DateTime> days) {
             this.days = days;
@@ -146,6 +164,15 @@ public class WeekFragment extends Fragment {
             return 0;
         }
 
+        public void setDateDotList(ArrayList<DateTime> dateDotList) {
+            this.dateDotList = dateDotList;
+            notifyDataSetChanged();
+        }
+
+        public void setShowDateDot(boolean showDateDot) {
+            isShowDateDot = showDateDot;
+        }
+
         @SuppressLint("InflateParams")
         @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
         @Override
@@ -161,6 +188,24 @@ public class WeekFragment extends Fragment {
 
             TextView dayTextView = (TextView) convertView.findViewById(R.id.daytext);
             dayTextView.setText(String.valueOf(dateTime.getDayOfMonth()));
+
+            ImageView dayDotImageView = (ImageView) convertView.findViewById(R.id.dayDot);
+
+            if (isShowDateDot) {
+                DateTimeFormatter formatter = DateTimeFormat.forPattern("YYYY-MM-dd");
+                dayDotImageView.setVisibility(View.INVISIBLE);
+
+                if (dateDotList != null) {
+                    for (int i = 0; i < dateDotList.size(); i++) {
+                        if (formatter.print(getItem(position)).equals(formatter.print(dateDotList.get(i)))) {
+                            dayDotImageView.setVisibility(View.VISIBLE);
+                            break;
+                        }
+                    }
+                }
+            } else {
+                dayDotImageView.setVisibility(View.GONE);
+            }
 
             BusProvider.getInstance().post(new Event.OnDayDecorateEvent(convertView, dayTextView,
                     dateTime, firstDay, WeekFragment.selectedDateTime));

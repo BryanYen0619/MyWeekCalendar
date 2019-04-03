@@ -67,8 +67,14 @@ public class WeekPager extends ViewPager {
 
     private void initPager(DateTime dateTime) {
         pos = NUM_OF_PAGES / 2;
+
+        boolean isShowDateDot = false;
+        if (typedArray != null) {
+            isShowDateDot = typedArray.getBoolean(R.styleable.WeekCalendar_showNoteDot, false);
+        }
+
         adapter = new PagerAdapter(((AppCompatActivity) getContext())
-                .getSupportFragmentManager(), dateTime);
+                .getSupportFragmentManager(), dateTime, isShowDateDot);
         setAdapter(adapter);
         addOnPageChangeListener(new ViewPager
                 .SimpleOnPageChangeListener() {
@@ -123,6 +129,12 @@ public class WeekPager extends ViewPager {
         WeekFragment.CalendarStartDate = event.getStartDate();
         WeekFragment.selectedDateTime = event.getStartDate();
         initPager(event.getStartDate());
+    }
+
+    @Subscribe
+    public void setDateDotList(Event.SetDateDotListEvent event) {
+        WeekFragment.setDateDotList = event.getDateDotList();
+        initPager(new DateTime());
     }
 
     private int idCheck() {

@@ -17,6 +17,7 @@
         </attr>
         <attr name="hideNames"  format="boolean"/>
         <attr name="showChtWeekDayName" format="boolean"/>
+        <attr name="showNoteDot" format="boolean"/>
 
         <!-- danigarciaalva -->
         <attr name="todaysDateTextColor" format="color"/>
