@@ -24,7 +24,7 @@
 <h5>Gradle</h5>
 
     dependencies {
-       compile 'bryanyen.myweekcalendar:weekcalendar:1.0.1'
+       implementation 'bryanyen.myweekcalendar:weekcalendar:1.0.1'
     }
 
  <h5>Maven</h5>
@@ -36,6 +36,13 @@
 	  <type>pom</type>
 	</dependency>
 
+<h5> 關聯Library </h5>
+
+    dependencies {
+       implementation 'joda-time:joda-time:2.9.4'
+       implementation 'com.squareup:otto:1.3.8'
+    }
+    
 <h3>Sample Usage</h3>
 
 
