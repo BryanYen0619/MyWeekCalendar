@@ -65,6 +65,7 @@ There are a few xml attributes to customise the calendar. If you feel that any c
  - `todaysDateBgColor`
  - `todaysDateTextColor`
  - `hideNames`
+ - `dayNameLength`
 
 2. New
 
@@ -98,6 +99,7 @@ There are a few xml attributes to customise the calendar. If you feel that any c
  - `todaysDateBgColor` todays date background color, same as `selectedBgColor`.
  - `todaysDateTextColor` todays date text color,  by default the text color is set to be white.
  - `hideNames` , set this attribute to hide name of week days.
+ - `dayNameLength` week day name length, singleLetter means (S,M,T..) and threeLetters means (Sun, Mun, Tue..).
 - `holidayTextColor ` , set holiday title and day text color.
 - `showChtWeekDayName` , on / off calendar week text show CHT text.
 

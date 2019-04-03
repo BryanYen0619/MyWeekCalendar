@@ -52,7 +52,8 @@
         app:showChtWeekDayName="true"
         app:todaysDateBgColor="@color/colorTropicalOrange"
         app:weekBackgroundColor="@color/colorWhite"
-        app:weekTextColor="@color/colorBlueGray"/>
+        app:weekTextColor="@color/colorBlueGray"
+        app:dayNameLength="singleLetter"/>
     <!--<Button-->
     <!--android:id="@+id/today"-->
     <!--android:layout_width="match_parent"-->

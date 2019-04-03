@@ -21,7 +21,9 @@ import com.squareup.otto.Subscribe;
 import org.joda.time.DateTime;
 
 import java.text.DateFormatSymbols;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Locale;
 
 import bryanyen.myweekcalendar.decorator.DayDecorator;
@@ -184,29 +186,25 @@ public class WeekCalendar extends LinearLayout {
                 String[] names;
                 if (typedArray.getBoolean(R.styleable.WeekCalendar_showChtWeekDayName, false)) {
                     names = DateFormatSymbols.getInstance(Locale.TAIWAN).getShortWeekdays();
-
-                    // Locale.TAIWAN 專用，過濾掉"週"
-                    for (int i = 0; i < names.length; i++) {
-                        if (names[i] != null && !names[i].equals("")) {
-                            names[i] = names[i].replace("週", "");
-                        }
-                    }
                 } else {
                     names = DateFormatSymbols.getInstance().getShortWeekdays();
                 }
 
-                String[] namesArray = Arrays.copyOfRange(names, 1, names.length);
+                List<String> daysName = new ArrayList<>(Arrays.asList(names));
+                daysName.remove(0);
 
-                //                List<String> daysName = new ArrayList<>(Arrays.asList(names));
-                //                daysName.remove(0);
-                //                daysName.add(daysName.remove(0));
-                //
-                //                if (typedArray.getInt(R.styleable.WeekCalendar_dayNameLength, 0) == 0)
-                //                    for (int i = 0; i < daysName.size(); i++)
-                //                        daysName.set(i, daysName.get(i).substring(0, 1));
-                //                names = new String[daysName.size()];
-                //                daysName.toArray(names);
-                return namesArray;
+                if (typedArray.getInt(R.styleable.WeekCalendar_dayNameLength, 0) == 0) {
+                    for (int i = 0; i < daysName.size(); i++) {
+                        if (typedArray.getBoolean(R.styleable.WeekCalendar_showChtWeekDayName, false)) {
+                            daysName.set(i, daysName.get(i).substring(1, 2));
+                        } else {
+                            daysName.set(i, daysName.get(i).substring(0, 1));
+                        }
+                    }
+                }
+                names = new String[daysName.size()];
+                daysName.toArray(names);
+                return names;
 
             }
         });
