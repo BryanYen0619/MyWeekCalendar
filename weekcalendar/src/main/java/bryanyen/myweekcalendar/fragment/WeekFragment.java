@@ -38,6 +38,7 @@ import bryanyen.myweekcalendar.eventbus.Event;
 public class WeekFragment extends Fragment {
     public static String DATE_KEY = "date_key";
     public static String DATE_NOTE_DOT = "date_note_dot";
+    public static String DATE_MONTH_MODE = "date_month_mode";
     private GridView gridView;
     private WeekAdapter weekAdapter;
     public static DateTime selectedDateTime = new DateTime();
@@ -47,6 +48,7 @@ public class WeekFragment extends Fragment {
     private DateTime endDate;
     private boolean isVisible;
     private boolean isShowDateDot;
+    private boolean isMonthMode;
 
     @Nullable
     @Override
@@ -58,15 +60,26 @@ public class WeekFragment extends Fragment {
     }
 
     private void init() {
+        isShowDateDot = getArguments().getBoolean(DATE_NOTE_DOT);
+        isMonthMode = getArguments().getBoolean(DATE_MONTH_MODE);
+
         ArrayList<DateTime> days = new ArrayList<>();
         DateTime midDate = (DateTime) getArguments().getSerializable(DATE_KEY);
-        isShowDateDot = getArguments().getBoolean(DATE_NOTE_DOT);
         if (midDate != null) {
             midDate = midDate.withDayOfWeek(DateTimeConstants.WEDNESDAY);
         }
-        //Getting all seven days
 
-        for (int i = -3; i <= 3; i++)
+        int limit;
+        if(isMonthMode) {
+            //Getting 30 days mode
+            limit = 31;
+        } else {
+            //Getting 7 days mode
+            limit = 3;
+        }
+
+        //Getting all days
+        for (int i = -3; i <= limit; i++)
             days.add(midDate != null ? midDate.plusDays(i) : null);
 
         startDate = days.get(0);

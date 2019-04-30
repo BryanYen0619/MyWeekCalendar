@@ -80,6 +80,7 @@ There are a few xml attributes to customise the calendar. If you feel that any c
 - `holidayTextColor` 
 - `showChtWeekDayName` 
 - `showNoteDot`
+- `monthMode`
 
 ----------
 
@@ -109,9 +110,10 @@ There are a few xml attributes to customise the calendar. If you feel that any c
  - `todaysDateTextColor` todays date text color,  by default the text color is set to be white.
  - `hideNames` , set this attribute to hide name of week days.
  - `dayNameLength` week day name length, singleLetter means (S,M,T..) and threeLetters means (Sun, Mun, Tue..).
-- `holidayTextColor ` , set holiday title and day text color.
-- `showChtWeekDayName` , on / off calendar week text show CHT text.
-- `showNoteDot` , show note dot under date text.
+ - `holidayTextColor ` , set holiday title and day text color.
+ - `showChtWeekDayName` , on / off calendar week text show CHT text.
+ - `showNoteDot` , show note dot under date text.
+ - `monthMode` , select Calendar View Show Mode, Week mode or Month mode.
 
 ----------
 <h3>Impelement Listener </h3>

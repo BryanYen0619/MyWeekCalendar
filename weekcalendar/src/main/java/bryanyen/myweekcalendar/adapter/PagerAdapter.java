@@ -13,6 +13,7 @@ import bryanyen.myweekcalendar.eventbus.Event;
 import bryanyen.myweekcalendar.fragment.WeekFragment;
 
 import static bryanyen.myweekcalendar.fragment.WeekFragment.DATE_KEY;
+import static bryanyen.myweekcalendar.fragment.WeekFragment.DATE_MONTH_MODE;
 import static bryanyen.myweekcalendar.fragment.WeekFragment.DATE_NOTE_DOT;
 import static bryanyen.myweekcalendar.view.WeekPager.NUM_OF_PAGES;
 
@@ -24,15 +25,24 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
     private int currentPage = NUM_OF_PAGES / 2;
     private DateTime date;
     private boolean isNoteDot = false;
+    private boolean isMonthMode = false;
+    private int limit;
 
-    public PagerAdapter(FragmentManager fm, DateTime date, boolean isNoteDot) {
+    public PagerAdapter(FragmentManager fm, DateTime date, boolean isNoteDot, boolean isMonthMode) {
         super(fm);
         this.date = date;
         this.isNoteDot = isNoteDot;
+        this.isMonthMode = isMonthMode;
     }
 
     @Override
     public Fragment getItem(int position) {
+        if(isMonthMode) {
+            limit = 30;
+        } else {
+            limit = 7;
+        }
+
         WeekFragment fragment = new WeekFragment();
         Bundle bundle = new Bundle();
 
@@ -44,6 +54,7 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
             bundle.putSerializable(DATE_KEY, getTodaysDate());
 
         bundle.putBoolean(DATE_NOTE_DOT, isNoteDot);
+        bundle.putBoolean(DATE_MONTH_MODE, isMonthMode);
 
         fragment.setArguments(bundle);
         return fragment;
@@ -59,11 +70,11 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
     }
 
     private DateTime getPerviousDate() {
-        return date.plusDays(-7);
+        return date.plusDays(-limit);
     }
 
     private DateTime getNextDate() {
-        return date.plusDays(7);
+        return date.plusDays(limit);
     }
 
     @Override
@@ -74,7 +85,7 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
     }
 
     public void swipeBack() {
-        date = date.plusDays(-7);
+        date = date.plusDays(-limit);
         currentPage--;
         currentPage = currentPage <= 1 ? NUM_OF_PAGES / 2 : currentPage;
         BusProvider.getInstance().post(
@@ -84,7 +95,7 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
 
 
     public void swipeForward() {
-        date = date.plusDays(7);
+        date = date.plusDays(limit);
         currentPage++;
         currentPage = currentPage >= NUM_OF_PAGES - 1 ? NUM_OF_PAGES / 2 : currentPage;
         BusProvider.getInstance().post(

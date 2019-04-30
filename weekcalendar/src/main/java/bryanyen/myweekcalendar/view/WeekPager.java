@@ -69,12 +69,14 @@ public class WeekPager extends ViewPager {
         pos = NUM_OF_PAGES / 2;
 
         boolean isShowDateDot = false;
+        boolean isMonthMode = false;
         if (typedArray != null) {
             isShowDateDot = typedArray.getBoolean(R.styleable.WeekCalendar_showNoteDot, false);
+            isMonthMode = typedArray.getBoolean(R.styleable.WeekCalendar_monthMode, false);
         }
 
         adapter = new PagerAdapter(((AppCompatActivity) getContext())
-                .getSupportFragmentManager(), dateTime, isShowDateDot);
+                .getSupportFragmentManager(), dateTime, isShowDateDot, isMonthMode);
         setAdapter(adapter);
         addOnPageChangeListener(new ViewPager
                 .SimpleOnPageChangeListener() {
