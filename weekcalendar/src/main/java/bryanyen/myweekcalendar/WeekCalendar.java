@@ -225,10 +225,12 @@ public class WeekCalendar extends LinearLayout {
 
     public void moveToPreviousWeek() {
         BusProvider.getInstance().post(new Event.SetCurrentPageEvent(-1));
+        BusProvider.getInstance().post(new Event.UpdateSelectedDateEvent(-7));
     }
 
     public void moveToNextWeek() {
         BusProvider.getInstance().post(new Event.SetCurrentPageEvent(1));
+        BusProvider.getInstance().post(new Event.UpdateSelectedDateEvent(7));
     }
 
     public void moveToPrevious() {
