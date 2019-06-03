@@ -117,6 +117,12 @@ public class WeekFragment extends Fragment {
                         .toLocalDate()) && event.getDirection() == -1))
                     BusProvider.getInstance().post(new Event.SetCurrentPageEvent(event.getDirection()));
             }
+            if (event.getDirection() == 7) {
+                BusProvider.getInstance().post(new Event.SetCurrentPageEvent(1));
+            }
+            if (event.getDirection() == -7) {
+                BusProvider.getInstance().post(new Event.SetCurrentPageEvent(-1));
+            }
             BusProvider.getInstance().post(new Event.InvalidateEvent());
         }
     }
