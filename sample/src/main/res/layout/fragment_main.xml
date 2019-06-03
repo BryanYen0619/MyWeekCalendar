@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/previousButton"
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:background="@color/transparent"
+            android:paddingLeft="13dp"
+            android:text="P"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/currentMonText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight=".25"
+                android:gravity="center"
+                android:text="TEST"
+                android:textSize="22sp"/>
+
+            <bryanyen.myweekcalendar.WeekCalendar
+                android:id="@+id/weekCalendar"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight=".75"
+                android:background="@color/colorWhite"
+                app:dayNameLength="singleLetter"
+                app:daysBackgroundColor="@color/colorWhite"
+                app:daysTextColor="@color/colorBlueGray"
+                app:holidayTextColor="@color/colorSteelBlue"
+                app:numOfPages="150"
+                app:selectedBgColor="@color/colorBlueGray"
+                app:showChtWeekDayName="true"
+                app:todaysDateBgColor="@color/colorTropicalOrange"
+                app:weekBackgroundColor="@color/colorWhite"
+                app:weekTextColor="@color/colorBlueGray">
+            </bryanyen.myweekcalendar.WeekCalendar>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/dayDot1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:src="@drawable/img_drak_gray_circle"
+                    android:gravity="center"/>
+
+                <ImageView
+                    android:id="@+id/dayDot2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:src="@drawable/img_drak_gray_circle"
+                    android:gravity="center"/>
+
+                <ImageView
+                    android:id="@+id/dayDot3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:src="@drawable/img_drak_gray_circle"
+                    android:gravity="center"/>
+
+                <ImageView
+                    android:id="@+id/dayDot4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:src="@drawable/img_drak_gray_circle"
+                    android:gravity="center"/>
+
+                <ImageView
+                    android:id="@+id/dayDot5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:src="@drawable/img_drak_gray_circle"
+                    android:gravity="center"/>
+
+                <ImageView
+                    android:id="@+id/dayDot6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:src="@drawable/img_drak_gray_circle"
+                    android:gravity="center"/>
+
+                <ImageView
+                    android:id="@+id/dayDot7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:src="@drawable/img_drak_gray_circle"
+                    android:gravity="center"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/nextButton"
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:background="@color/transparent"
+            android:paddingRight="13dp"
+            android:text="N"/>
+
+
+    </LinearLayout>
+</LinearLayout>

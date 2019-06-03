@@ -43,18 +43,19 @@
         android:id="@+id/weekCalendar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:background="@color/colorPrimary"
+        app:dayNameLength="singleLetter"
         app:daysBackgroundColor="@color/colorWhite"
         app:daysTextColor="@color/colorBlueGray"
         app:holidayTextColor="@color/colorSteelBlue"
         app:numOfPages="150"
         app:selectedBgColor="@color/colorSteelBlue"
         app:showChtWeekDayName="true"
+        app:showNoteDot="true"
         app:todaysDateBgColor="@color/colorTropicalOrange"
         app:weekBackgroundColor="@color/colorWhite"
-        app:weekTextColor="@color/colorBlueGray"
-        app:dayNameLength="singleLetter"
-        app:showNoteDot="true"/>
+        app:weekTextColor="@color/colorBlueGray"/>
     <!--<Button-->
     <!--android:id="@+id/today"-->
     <!--android:layout_width="match_parent"-->
@@ -79,11 +80,11 @@
     <!--android:layout_height="wrap_content"-->
     <!--android:onClick="onSelectedDateClick"/>-->
 
-    <!--<Button-->
-    <!--android:layout_weight="0.5"-->
-    <!--android:id="@+id/startDate"-->
-    <!--android:layout_width="0dp"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:onClick="onStartDateClick"/>-->
-    <!--</LinearLayout>-->
+    <Button
+        android:id="@+id/testFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onStartDateClick"
+        android:text="Test Fragment"/>
+
 </LinearLayout>

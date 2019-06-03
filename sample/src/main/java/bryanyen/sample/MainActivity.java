@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -70,6 +71,16 @@ private TextView currentMonText;
         dayNoteDot.add(test);
 
         weekCalendar.setDateDotList(dayNoteDot);
+
+        Button testFragment = (Button) findViewById(R.id.testFragment);
+        testFragment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(MainActivity.this, FragmentActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
